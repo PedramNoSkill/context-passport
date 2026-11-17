@@ -4,6 +4,7 @@ import importlib
 import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -259,6 +260,23 @@ class GitCaptureTests(unittest.TestCase):
         self.assertIn("diff --git", result["diff"])
         self.assertNotIn("\ufffd", result["diff"])
         self.assertTrue(any("diff" in warning.lower() and "truncat" in warning.lower() for warning in result["warnings"]))
+
+    def test_stream_overflow_drains_without_killing_the_producer(self):
+        import context_passport.git_capture as module
+
+        marker = self.base / "producer-finished"
+        code = ("import pathlib,sys; "
+                "sys.stdout.buffer.write(b'x' * (1024 * 1024)); "
+                "sys.stdout.buffer.flush(); "
+                "pathlib.Path(sys.argv[1]).write_text('finished', encoding='utf-8')")
+        output, exit_code, truncated = module._stream(
+            [sys.executable, "-c", code, str(marker)],
+            self.repo, self.env, 1024, 5,
+        )
+        self.assertTrue(marker.exists(), "overflow must let the producer release its working directory")
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(output, b"x" * 1024)
+        self.assertTrue(truncated)
 
     def test_detached_head_has_null_branch(self):
         self.write("readme.txt", "baseline\n")

@@ -14,7 +14,7 @@ _METADATA_LIMIT = 2 * 1024 * 1024
 
 
 def _stream(command, repo, env, limit, timeout):
-    """Retain at most limit+1 bytes and stop the producer on overflow."""
+    """Retain at most limit+1 bytes; drain excess until exit or the deadline."""
     try:
         process = subprocess.Popen(command, cwd=repo, env=env, shell=False,
                                    stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
@@ -25,15 +25,13 @@ def _stream(command, repo, env, limit, timeout):
     overflow = threading.Event()
     def read():
         try:
-            while len(output) <= limit:
-                chunk = process.stdout.read(min(8192, limit + 1 - len(output)))
+            while True:
+                chunk = process.stdout.read(8192)
                 if not chunk:
                     break
-                output.extend(chunk)
+                output.extend(chunk[:max(0, limit + 1 - len(output))])
                 if len(output) > limit:
                     overflow.set()
-                    process.kill()
-                    break
         except OSError:
             pass
         finally:
