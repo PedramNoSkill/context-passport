@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "context-passport"
+version = "0.1.0"
+description = "Carry your work between AI tools. Local, reviewable handoffs with source evidence."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "PedramNoSkill"}]
+keywords = ["ai", "claude", "codex", "handoff", "context", "local-first"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Documentation",
+]
+dependencies = []
+
+[project.scripts]
+context-passport = "context_passport.cli:main"
+passport = "context_passport.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/PedramNoSkill/context-passport"
+Repository = "https://github.com/PedramNoSkill/context-passport"
+Issues = "https://github.com/PedramNoSkill/context-passport/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+context_passport = ["data/*.jsonl"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B", "UP"]

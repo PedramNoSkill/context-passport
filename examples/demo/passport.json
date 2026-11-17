@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "id": "cp_cfe798b6d86d43e195b7d1e33db69df6",
+  "title": "Notes app · synthetic demo",
+  "created_at": "2026-11-16T22:18:33.236420+00:00",
+  "target": "codex",
+  "source": {
+    "name": "demo-session.jsonl",
+    "sha256": "396032143e22b10cba8dd895230dc78061c08a6e10560345569b94d9e7b2bbad",
+    "format": "codex",
+    "conversation_id": "synthetic-demo",
+    "message_count": 5
+  },
+  "sections": {
+    "goal": [
+      {
+        "text": "Build an accessible search box for a small notes app. Keep storage local and avoid adding a hosted service.",
+        "evidence": [
+          "m0001"
+        ],
+        "basis": "user_message"
+      }
+    ],
+    "decisions": [
+      {
+        "text": "Use SQLite FTS5 for local search.",
+        "evidence": [
+          "m0002"
+        ],
+        "basis": "transcript_statement"
+      }
+    ],
+    "completed": [
+      {
+        "text": "Added keyboard navigation and labelled results.",
+        "evidence": [
+          "m0002"
+        ],
+        "basis": "transcript_statement"
+      }
+    ],
+    "next_steps": [
+      {
+        "text": "Add an empty-result state.",
+        "evidence": [
+          "m0002"
+        ],
+        "basis": "transcript_statement"
+      },
+      {
+        "text": "Check focus order with a screen reader.",
+        "evidence": [
+          "m0002"
+        ],
+        "basis": "transcript_statement"
+      },
+      {
+        "text": "Fix the empty-result label before rerunning the suite.",
+        "evidence": [
+          "m0005"
+        ],
+        "basis": "transcript_statement"
+      }
+    ],
+    "blockers": [
+      {
+        "text": "A representative multilingual fixture is still missing.",
+        "evidence": [
+          "m0002"
+        ],
+        "basis": "transcript_statement"
+      }
+    ]
+  },
+  "test_runs": [
+    {
+      "command": "python -m unittest discover -v",
+      "exit_code": 1,
+      "status": "failed",
+      "evidence": [
+        "m0003",
+        "m0004"
+      ]
+    }
+  ],
+  "git": null,
+  "evidence": [
+    {
+      "id": "m0001",
+      "role": "user",
+      "text": "Build an accessible search box for a small notes app. Keep storage local and avoid adding a hosted service.",
+      "locator": "line 2: $.payload",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "kind": "message",
+      "tool_name": null,
+      "call_id": null
+    },
+    {
+      "id": "m0002",
+      "role": "assistant",
+      "text": "Decision: Use SQLite FTS5 for local search.\nDone: Added keyboard navigation and labelled results.\nNext steps:\n- Add an empty-result state.\n- [ ] Check focus order with a screen reader.\nBlocked: A representative multilingual fixture is still missing.",
+      "locator": "line 3: $.payload",
+      "timestamp": "2026-01-15T10:01:00Z",
+      "kind": "message",
+      "tool_name": null,
+      "call_id": null
+    },
+    {
+      "id": "m0003",
+      "role": "assistant",
+      "text": "{\"command\": \"python -m unittest discover -v\"}",
+      "locator": "line 4: $.payload",
+      "timestamp": "2026-01-15T10:02:00Z",
+      "kind": "tool_call",
+      "tool_name": "shell_command",
+      "call_id": "demo-test-1"
+    },
+    {
+      "id": "m0004",
+      "role": "tool",
+      "text": "{\"output\": \"Ran 8 tests in 0.04s\\nFAILED (failures=1): missing empty-result label\", \"exit_code\": 1}",
+      "locator": "line 5: $.payload",
+      "timestamp": "2026-01-15T10:02:01Z",
+      "kind": "tool_result",
+      "tool_name": "shell_command",
+      "call_id": "demo-test-1"
+    },
+    {
+      "id": "m0005",
+      "role": "assistant",
+      "text": "Next: Fix the empty-result label before rerunning the suite.\nThis demo uses a deliberately synthetic credential assignment to exercise redaction: API_KEY=[REDACTED:secret] Do not copy credentials into a handoff.",
+      "locator": "line 6: $.payload",
+      "timestamp": "2026-01-15T10:03:00Z",
+      "kind": "message",
+      "tool_name": null,
+      "call_id": null
+    }
+  ],
+  "warnings": [
+    "SYNTHETIC DEMO: conversation and historical test output are fictional examples.",
+    "Transcript statements are literal, unverified claims; review source evidence.",
+    "A zero exit code records the test runner outcome, not independent verification of assertions."
+  ],
+  "redactions": {
+    "counts": {
+      "secret": 1
+    },
+    "total": 1
+  }
+}

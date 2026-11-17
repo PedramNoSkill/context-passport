@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
+<title id="title">Context Passport — Your context travels.</title><desc id="desc">Carry a source-backed handoff from Claude to Codex. Local only, with reviewable evidence.</desc>
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#263343" stroke-width=".5"/></pattern><linearGradient id="cover" x2="1" y2="1"><stop stop-color="#173e40"/><stop offset="1" stop-color="#101f2a"/></linearGradient></defs>
+<rect width="1200" height="390" rx="20" fill="#0d1420"/><rect width="1200" height="390" rx="20" fill="url(#grid)"/>
+<text x="55" y="66" fill="#69e3c0" font-family="monospace" font-size="14" letter-spacing="3">LOCAL CONTEXT. ANY ASSISTANT.</text>
+<text x="55" y="137" fill="#f0f4f7" font-family="Arial,sans-serif" font-size="52" font-weight="700">Context Passport</text>
+<text x="57" y="181" fill="#a5b4c7" font-family="Arial,sans-serif" font-size="23">Switch AI tools without starting over.</text>
+<path d="M70 260H520" stroke="#547077" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="56" y="229" width="130" height="61" rx="12" fill="#172331" stroke="#3f566f"/>
+<text x="121" y="265" fill="#e2e9f2" text-anchor="middle" font-family="monospace" font-size="17">CLAUDE</text>
+<rect x="249" y="229" width="130" height="61" rx="12" fill="#193532" stroke="#69e3c0"/>
+<text x="314" y="265" fill="#91f1d4" text-anchor="middle" font-family="monospace" font-size="17">PASSPORT</text>
+<rect x="442" y="229" width="130" height="61" rx="12" fill="#172331" stroke="#3f566f"/>
+<text x="507" y="265" fill="#e2e9f2" text-anchor="middle" font-family="monospace" font-size="17">CODEX</text>
+<text x="58" y="340" fill="#8c9db2" font-family="monospace" font-size="14">JSON + MARKDOWN + OFFLINE REVIEW · NO API KEY</text>
+<g transform="translate(757 49) rotate(5 160 150)"><rect x="9" y="10" width="292" height="295" rx="18" fill="#050b12" opacity=".7"/><rect width="292" height="295" rx="18" fill="url(#cover)" stroke="#54717b"/><path d="M20 0V295" stroke="#436362"/><circle cx="157" cy="93" r="43" fill="none" stroke="#69e3c0" stroke-width="2"/><ellipse cx="157" cy="93" rx="20" ry="43" fill="none" stroke="#69e3c0"/><path d="M114 93H200M121 72H193M121 113H193" stroke="#69e3c0"/><text x="157" y="177" text-anchor="middle" fill="#dcefe9" font-family="monospace" font-size="20" letter-spacing="3">CONTEXT</text><text x="157" y="203" text-anchor="middle" fill="#dcefe9" font-family="monospace" font-size="20" letter-spacing="3">PASSPORT</text><rect x="102" y="228" width="112" height="32" rx="5" fill="none" stroke="#f9a98d" transform="rotate(-8 158 244)"/><text x="158" y="249" text-anchor="middle" fill="#f9a98d" font-family="monospace" font-size="12">REVIEW FIRST</text></g>
+</svg>
